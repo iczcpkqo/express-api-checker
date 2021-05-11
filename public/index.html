@@ -1,0 +1,316 @@
+<html>
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="javascripts/jq.js"></script>
+  <script src="javascripts/assignment-06_client.js"></script>
+  <style >
+    body {
+      counter-reset: num;
+    }
+
+    table thead tr {
+      background-color: cornsilk;
+    }
+    table thead tr th {
+      padding: 10px;
+    }
+    table tbody tr:nth-child(2n) {
+      background-color: aliceblue;
+    }
+    table td {
+      text-align: center;
+      padding: 10px 20px;
+    }
+    table tbody td:first-child:before {
+      counter-increment: num;
+      content: counter(num);
+    }
+    #console-box {
+      background-color: #006;
+      border-radius: 10px;
+      color: yellow;
+      padding: 20px;
+    }
+    input[type="text"] {
+        width: 80px;
+    }
+    i {
+      font-size: 14px;
+      font-weight: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Assignment-06 API</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>API Address</th>
+        <th>Type</th>
+        <th>API Description</th>
+        <th>Operation</th>
+        <th>Click Button to Test API</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/post/user</td>
+        <td>POST</td>
+        <td>
+            Add a Random User.
+        </td>
+        <th> - </th>
+        <td>
+          <input type="button" id="btn-adduser" value="Test API ">
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/post/item</td>
+        <td>POST</td>
+        <td>
+          Add a Random Item.
+        </td>
+        <th> - </th>
+        <td>
+          <input type="button" id="btn-additem" value="Test API ">
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/post/order</td>
+        <td>POST</td>
+        <td>
+          Add a Random Order.
+        </td>
+        <th> - </th>
+        <td>
+          <input type="button" id="btn-addorder" value="Test API ">
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/get/users</td>
+        <td>GET</td>
+        <td>
+            Select All users.
+        </td>
+        <th> - </th>
+        <td>
+          <input type="button" id="btn-selusers" value="Test API ">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/get/items</td>
+        <td>GET</td>
+        <td>
+          Select All Items.
+        </td>
+        <th> - </th>
+        <td>
+          <input type="button" id="btn-selitems" value="Test API ">
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/get/orders</td>
+        <td>GET</td>
+        <td>
+          Select All Orders.
+        </td>
+        <th> - </th>
+        <td>
+          <input type="button" id="btn-selorders" value="Test API ">
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/put/user</td>
+        <td>PUT</td>
+        <td>
+          Update A User Info.
+        </td>
+        <th>
+          <label>
+            <a>id</a>
+            <input id="user-id" type="text" placeholder="input id">
+          </label>
+          <label>
+            <a>info</a>
+            <select id="user-info">
+              <option>title</option>
+              <option>first_name</option>
+              <option>surname</option>
+              <option>mobile</option>
+              <option>email</option>
+              <option>addr_1</option>
+              <option>addr_2</option>
+              <option>town</option>
+              <option>county</option>
+              <option>eircode</option>
+            </select>
+          </label>
+          <label>
+            <a>value</a>
+            <input id="user-value" type="text" placeholder="input value">
+          </label>
+        </th>
+        <td>
+          <input type="button" id="btn-updateuser" value="Test API ">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/put/item</td>
+        <td>PUT</td>
+        <td>
+          Update A Item Info.
+        </td>
+        <th>
+          <label>
+            <a>id</a>
+            <input id="item-id" type="text" placeholder="input id">
+          </label>
+          <label>
+            <a>info</a>
+            <select id="item-info">
+              <option>manufacturer</option>
+              <option>model</option>
+              <option>price</option>
+            </select>
+          </label>
+          <label>
+            <a>value</a>
+            <input id="item-value" type="text" placeholder="input value">
+          </label>
+        </th>
+        <td>
+          <input type="button" id="btn-updateitem" value="Test API ">
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/put/order</td>
+        <td>PUT</td>
+        <td>
+          Update A Order Info.
+        </td>
+        <th>
+          <label>
+            <a>id</a>
+            <input id="order-id" type="text" placeholder="input id">
+          </label>
+          <label>
+            <a>address</a>
+            <select id="order-info">
+              <option>addr_1</option>
+              <option>addr_2</option>
+              <option>town</option>
+              <option>county</option>
+              <option>eircode</option>
+            </select>
+          </label>
+          <label>
+            <a>value</a>
+            <input id="order-value" type="text" placeholder="input value">
+          </label>
+        </th>
+        <td>
+          <input type="button" id="btn-update-order-address" value="Test API ">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/delete/user</td>
+        <td>DELETE</td>
+        <td>
+          DELETE A USER.
+        </td>
+        <th>
+          <label>
+            <a>id</a>
+            <input id="user-d-id" type="text" placeholder="input id">
+          </label>
+          <i>(e.g. 6099a345962a7a07f4525e87)</i>
+        </th>
+        <td>
+          <input type="button" id="btn-deleteuser" value="Test API ">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/delete/item</td>
+        <td>DELETE</td>
+        <td>
+          DELETE A Item.
+        </td>
+        <th>
+          <label>
+            <a>id</a>
+            <input id="item-d-id" type="text" placeholder="input id">
+          </label>
+          <i>(e.g. 609ae2654d95d128e826aaf4)</i>
+        </th>
+        <td>
+          <input type="button" id="btn-deleteitem" value="Test API ">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td></td>
+        <td>http://localhost:3000/delete/order</td>
+        <td>DELETE</td>
+        <td>
+          DELETE A Order.
+        </td>
+        <th>
+          <label>
+            <a>id</a>
+            <input id="order-d-id" type="text" placeholder="input id">
+          </label>
+          <i>(e.g. 6099bb2e0442320890f276d2)</i>
+        </th>
+        <td>
+          <input type="button" id="btn-deleteorder" value="Test API ">
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+<div>
+  <br>
+  <h2>
+    Console Box
+  </h2>
+</div>
+
+<div id="console-box">
+
+</div>
+</body>
+</html>
